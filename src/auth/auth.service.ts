@@ -13,8 +13,7 @@ export class AuthService {
   public constructor(
     private readonly userService: UserService,
     private readonly deviceService: DeviceService,
-  ) {
-  }
+  ) {}
 
   public readonly signUp = (
     signUpDto: SignUpDto,
@@ -22,22 +21,11 @@ export class AuthService {
     pipe(
       signUpDto,
       this.deviceService.create,
-      TE.map(
-        CreateUserDto.of(signUpDto.isOfferAccepted)(signUpDto.password),
-      ),
-      TE.chain(
-        this.userService.create,
-      ),
+      TE.map(CreateUserDto.of(signUpDto.isOfferAccepted)(signUpDto.password)),
+      TE.chain(this.userService.create),
     );
 
-  public readonly signIn = (
-    signIn: SignInDto,
-  ) => {
-    pipe(
-      signIn,
-      this.userService.match,
-    );
+  public readonly signIn = (signIn: SignInDto) => {
+    pipe(signIn, this.userService.match);
   };
-
-
 }

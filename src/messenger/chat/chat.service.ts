@@ -16,8 +16,7 @@ export class ChatService {
     @InjectModel(Chat.name)
     private chatModel: Model<ChatDocument>,
     private userService: UserService,
-  ) {
-  }
+  ) {}
 
   readonly create = (
     createChatDto: CreateChatDto,
@@ -25,15 +24,11 @@ export class ChatService {
     pipe(
       createChatDto.members,
       this.userService.findByLogins,
-      TE.map(
-        A.map((user) => user.id),
-      ),
-      TE.map(
-        (ids) => ({
-          title: createChatDto.title,
-          members: ids,
-        }),
-      ),
+      TE.map(A.map((user) => user.id)),
+      TE.map((ids) => ({
+        title: createChatDto.title,
+        members: ids,
+      })),
       TE.chain(
         tryCatch(
           (x) => this.chatModel.create(x),

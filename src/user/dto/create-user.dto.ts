@@ -8,14 +8,14 @@ export class CreateUserDto {
 
   public static of =
     (login: string) =>
-      (isOfferAccepted: boolean) =>
-        (password: string) =>
-          (device: DeviceEntity): CreateUserDto => {
-            return {
-              login,
-              isOfferAccepted,
-              password,
-              device,
-            };
-          };
+    (isOfferAccepted: boolean) =>
+    (password: string) =>
+    (device: DeviceEntity): CreateUserDto => {
+      return {
+        login,
+        isOfferAccepted,
+        password,
+        device,
+      };
+    };
 }

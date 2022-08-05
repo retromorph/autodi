@@ -6,12 +6,9 @@ import { UserModule } from "../../user/user.module";
 
 @Module({
   imports: [
-    MongooseModule.forFeature(
-      [{ name: Chat.name, schema: ChatSchema }],
-    ),
+    MongooseModule.forFeature([{ name: Chat.name, schema: ChatSchema }]),
     UserModule,
   ],
   providers: [ChatService],
 })
-export class ChatModule {
-}
+export class ChatModule {}

@@ -6,10 +6,10 @@ export class CreateDeviceDto {
 
   public static of =
     (identity: string) =>
-      (type: DeviceType): CreateDeviceDto => {
-        return {
-          identity,
-          type,
-        };
+    (type: DeviceType): CreateDeviceDto => {
+      return {
+        identity,
+        type,
       };
+    };
 }

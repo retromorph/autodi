@@ -1,1 +1,1 @@
-export type With<A> = A & unknown
+export type With<A> = A & unknown;

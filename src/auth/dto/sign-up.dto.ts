@@ -1,6 +1,13 @@
 import { DeviceType } from "../../device/device.entity";
 import { Or } from "../../shared/validators/or.validator";
-import { IsPhoneNumber, IsEmail, IsString, Equals, IsNumber, Max } from "class-validator";
+import {
+  IsPhoneNumber,
+  IsEmail,
+  IsString,
+  Equals,
+  IsNumber,
+  Max,
+} from "class-validator";
 
 export class SignUpDto {
   @Or([IsPhoneNumber(), IsEmail()])

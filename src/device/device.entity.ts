@@ -1,9 +1,15 @@
-import { Column, Entity, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  OneToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { UserEntity } from "../user/user.entity";
 
 export enum DeviceStatus {
   VERIFIED,
-  UNVERIFIED
+  UNVERIFIED,
 }
 
 export enum DeviceType {

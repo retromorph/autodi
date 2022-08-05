@@ -4,10 +4,10 @@ export class MatchUserDto {
 
   public static of =
     (identity: string) =>
-      (password: string): MatchUserDto => {
-        return {
-          identity,
-          password,
-        };
+    (password: string): MatchUserDto => {
+      return {
+        identity,
+        password,
       };
+    };
 }

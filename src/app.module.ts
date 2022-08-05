@@ -4,7 +4,7 @@ import mongoConfig from "./_config/mongo.config";
 import typeormConfig from "./_config/typeorm.config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { MongooseModule } from "@nestjs/mongoose";
-import { FileModule } from './file/file.module';
+import { FileModule } from "./file/file.module";
 
 @Module({
   imports: [
@@ -17,5 +17,4 @@ import { FileModule } from './file/file.module';
     FileModule,
   ],
 })
-export class AppModule {
-}
+export class AppModule {}

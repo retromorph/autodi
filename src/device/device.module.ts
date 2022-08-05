@@ -7,5 +7,4 @@ import { DeviceEntity } from "./device.entity";
   providers: [DeviceModule],
   exports: [DeviceModule],
 })
-export class DeviceModule {
-}
+export class DeviceModule {}

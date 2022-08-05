@@ -5,11 +5,10 @@ import { TokenService } from "./token.service";
 
 @Module({
   imports: [
-    MongooseModule.forFeature(
-      [{ name: RefreshToken.name, schema: RefreshTokenSchema }],
-    ),
+    MongooseModule.forFeature([
+      { name: RefreshToken.name, schema: RefreshTokenSchema },
+    ]),
   ],
-  providers: [TokenService]
+  providers: [TokenService],
 })
-export class TokenModule {
-}
+export class TokenModule {}

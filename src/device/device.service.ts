@@ -1,5 +1,9 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
-import { DeviceEntity, deviceTypesNeedVerification, DeviceStatus } from "./device.entity";
+import {
+  DeviceEntity,
+  deviceTypesNeedVerification,
+  DeviceStatus,
+} from "./device.entity";
 import { CreateDeviceDto } from "./dto/create-device.dto";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -12,14 +16,14 @@ export class DeviceService {
   public constructor(
     @InjectRepository(DeviceEntity)
     private readonly deviceRepository: Repository<DeviceEntity>,
-  ) {
-  }
+  ) {}
 
   private readonly addStatus = (createDevice: CreateDeviceDto) => ({
     ...createDevice,
-    status: createDevice.type in deviceTypesNeedVerification
-      ? DeviceStatus.UNVERIFIED
-      : DeviceStatus.VERIFIED,
+    status:
+      createDevice.type in deviceTypesNeedVerification
+        ? DeviceStatus.UNVERIFIED
+        : DeviceStatus.VERIFIED,
   });
 
   public readonly create = (

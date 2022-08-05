@@ -1,10 +1,16 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { DeviceEntity } from "../device/device.entity";
 
 export enum UserStatusEnum {
   UNVERIFIED,
   VERIFIED,
-  BLOCKED
+  BLOCKED,
 }
 
 @Entity("user")

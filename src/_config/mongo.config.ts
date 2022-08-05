@@ -6,7 +6,6 @@ import { MongoConfigDto } from "./dto/mongoConfig.dto";
 export default registerAs(
   "mongoConfig",
   (): [string, MongooseModuleOptions] => {
-
     const mongoConfig: MongoConfigDto = {
       host: process.env["MONGO_HOST"],
       port: parseInt(process.env["MONGO_PORT"]),

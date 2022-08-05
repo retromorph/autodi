@@ -7,5 +7,4 @@ import { MessengerGateway } from "./messenger.gateway";
   imports: [MessageModule, ChatModule],
   providers: [MessengerGateway],
 })
-export class MessengerModule {
-}
+export class MessengerModule {}
