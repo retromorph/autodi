@@ -1,0 +1,83 @@
+version: "3.7"
+
+volumes:
+  mongo-storage:
+  postgres-storage:
+  redis-storage:
+
+networks:
+  autodi-network:
+    name: autodi-network
+
+services:
+  mongo:
+    image: mongo:4.2.0
+    container_name: autodi-mongo
+    volumes:
+      - mongo-storage:/data/db
+    networks:
+      autodi-network:
+    ports:
+      - "27018:27017"
+    hostname: autodi-mongo
+    restart: always
+  postgres:
+    image: postgres:11
+    container_name: autodi-postgres
+    environment: 
+      - POSTGRES_USER=autodi
+      - POSTGRES_PASSWORD=autodi
+      - PGDATA=/data/postgres
+    volumes:
+       - postgres-storage:/data/postgres
+    networks:
+      autodi-network:
+    ports:
+      - "5434:5432"
+    hostname: autodi-postgres
+    restart: always
+  redis:
+    image: redis:6.2.4-alpine
+    container_name: autodi-redis
+    volumes:
+      - redis-storage:/var/lib/redis
+    networks:
+      autodi-network:
+    ports:
+      - "6380:6379"
+    hostname: autodi-redis
+    restart: always
+  adminer:
+    image: michalhosna/adminer
+    container_name: autodi-adminer
+    environment:
+      - ADMINER_SERVER=autodi-postgres:5432
+      - ADMINER_USERNAME=autodi
+      - ADMINER_PASSWORD=autodi
+      - ADMINER_DRIVER=pgsql
+    networks:
+      autodi-network:
+    ports:
+      - "8082:8080"
+    hostname: autodi
+    restart: always
+  mongo-express:
+    image: mongo-express:0.54
+    container_name: autodi-mongo-express
+    networks:
+      autodi-network:
+    ports:
+      - "8081:8081"
+    hostname: autodi-mongo-express
+    restart: always
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: autodi-redis-commander
+    environment:
+      - REDIS_HOSTS=autodi:autodi-redis:6379
+    networks:
+      autodi-network:
+    ports:
+      - "8083:8081"
+    hostname: autodi-redis-commander
+    restart: always
